@@ -10,19 +10,17 @@ import { StylingService } from '../services/commons/styling.service';
 })
 export class JournalComponent implements OnInit {  
   stylingService : StylingService;
+  addJournal : boolean = false;
   constructor(stylingService : StylingService) {
     this.stylingService = stylingService;
-
-
-
   }
 
+  onAddJournal(){
+    this.addJournal = !this.addJournal;
+  }
 
   ngOnInit(): void {
   }
-
-
-
 
   // Styles
   getMainDivStyle(){
