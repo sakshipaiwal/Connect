@@ -27,4 +27,8 @@ import { JournalListComponent } from './journal/journal-list/journal-list.compon
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+
+
+ }
