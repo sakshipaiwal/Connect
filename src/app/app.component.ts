@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'connect-frontend';
+  hacked : Boolean = true;
+
+
+  onForgive(){
+    console.log("Hello")
+    this.hacked = false;
+  }
 }
