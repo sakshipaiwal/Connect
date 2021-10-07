@@ -8,6 +8,7 @@ import { JournalComponent } from './journal/journal.component';
 import { TaskTrackerComponent } from './task-tracker/task-tracker.component';
 import { SearchComponent } from './journal/search/search.component';
 import { JournalEntryComponent } from './journal/journal-entry/journal-entry.component';
+import { JournalListComponent } from './journal/journal-list/journal-list.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { JournalEntryComponent } from './journal/journal-entry/journal-entry.com
     JournalComponent,
     TaskTrackerComponent,
     SearchComponent,
-    JournalEntryComponent
+    JournalEntryComponent,
+    JournalListComponent
   ],
   imports: [
     BrowserModule,
