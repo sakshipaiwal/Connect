@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StylingService } from '../services/commons/styling.service';
+import { TaskService } from '../services/taskService/task.service';
+import { TaskInterface } from './dataStructures/task';
 
 @Component({
   selector: 'app-tracker',
@@ -8,11 +10,18 @@ import { StylingService } from '../services/commons/styling.service';
 })
 export class TrackerComponent implements OnInit {
   stylingService : StylingService;
-  constructor(stylingService : StylingService) {
+  taskService : TaskService;
+  
+  taskList : TaskInterface[] = [];
+
+  constructor(stylingService : StylingService,taskService : TaskService) {
     this.stylingService = stylingService;
+    this.taskService = taskService;
    }
 
   ngOnInit(): void {
+    this.taskList = this.taskService.fetchTasks();
+
   }
 
 

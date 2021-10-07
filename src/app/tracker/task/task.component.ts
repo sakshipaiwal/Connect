@@ -1,5 +1,7 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { StylingService } from 'src/app/services/commons/styling.service';
+import { TaskService } from 'src/app/services/taskService/task.service';
+import { TaskInterface } from '../dataStructures/task';
 
 @Component({
   selector: 'app-task',
@@ -7,14 +9,10 @@ import { StylingService } from 'src/app/services/commons/styling.service';
   styleUrls: ['./task.component.css']
 })
 export class TaskComponent implements OnInit {
+  @Input() task : TaskInterface;
 
-  taskDescription : string;
-  taskDuration : number;
-  
 
-  constructor(@Inject(String) taskDescription : string, @Inject(Number) taskDuration : number,stylingService : StylingService) {
-  
-
+  constructor(stylingService : StylingService) {
   }
 
   ngOnInit(): void {
