@@ -9,6 +9,7 @@ import { TaskTrackerComponent } from './task-tracker/task-tracker.component';
 import { SearchComponent } from './journal/search/search.component';
 import { JournalEntryComponent } from './journal/journal-entry/journal-entry.component';
 import { JournalListComponent } from './journal/journal-list/journal-list.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { JournalListComponent } from './journal/journal-list/journal-list.compon
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

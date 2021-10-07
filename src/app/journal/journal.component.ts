@@ -1,6 +1,7 @@
 import { NgStyle } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { StylingService } from '../services/commons/styling.service';
+import { DiaryEntry } from './journal-entry/diaryEntryModel';
 
 
 @Component({
@@ -9,14 +10,25 @@ import { StylingService } from '../services/commons/styling.service';
   styleUrls: ['./journal.component.css']
 })
 export class JournalComponent implements OnInit {  
+  
   stylingService : StylingService;
-  addJournal : boolean = false;
+  journalEntry : boolean = false;
+  entries : DiaryEntry[] = [];
   constructor(stylingService : StylingService) {
     this.stylingService = stylingService;
   }
 
-  onAddJournal(){
-    this.addJournal = !this.addJournal;
+  onJournalEntry(){
+    this.journalEntry = true;
+  }
+
+  onViewJournalList(viewJournalList : any){
+    this.journalEntry = viewJournalList;
+  }
+
+  onAddJournal(diaryEntry : DiaryEntry){
+    console.log(diaryEntry);
+    this.entries.push(diaryEntry);
   }
 
   ngOnInit(): void {
