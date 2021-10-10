@@ -17,16 +17,20 @@
         
         <app-journal-list
         *ngFor="let entry of entries"
-        [diaryEntry] = "entry"></app-journal-list>
+        [diaryEntry] = "entry"
+        (outputDiaryEntry) = "onViewJournal($event)"
+        >
+        </app-journal-list>
 
     </div>
     
     <div *ngIf = "journalEntry">
         <div 
         style="display: flex; justify-content: center;">
-            <app-journal-entry 
-            (viewJournalListEmitter) = "onViewJournalList($event)"
-            (journalEmitter) = "onAddJournal($event)"></app-journal-entry>
+            <app-journal-entry
+            (journalEmitter) = "onAddJournal($event)"
+            [diaryEntry]="diaryEntry"
+            ></app-journal-entry>
             
         </div>
         

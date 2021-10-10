@@ -1,7 +1,8 @@
 <div
 style=" display: flex; justify-content: center; margin-top: 1vw;">
     <div
-    style="width: 50vw; height: 4vw; background-color: white; display: flex; justify-content: space-between; padding: 1vw; border-style:inset;">
+    style="width: 50vw; height: 4vw; background-color: white; display: flex; justify-content: space-between; padding: 1vw; border-style:inset; cursor : pointer;"
+    (click)="onViewJournal()">
         <div
         style=" display: flex; justify-content: space-between; width: 4vw;">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bookmark-star" viewBox="0 0 16 16">
@@ -14,12 +15,12 @@ style=" display: flex; justify-content: center; margin-top: 1vw;">
             </svg>
         </div>
         <div
-        style=" display: flex; justify-content: space-between; width: 35vw;">
+        style=" display: flex; justify-content: space-evenly; width: 35vw;">
             <div>
                 {{diaryEntry.title}}
             </div>
             <div>
-                {{diaryEntry.message.slice(0,40)}}
+                {{diaryEntry.message.slice(0,30)}}
             </div>
         </div>
         <div>

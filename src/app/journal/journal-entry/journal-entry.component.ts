@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { DiaryEntry } from './diaryEntryModel';
 @Component({
   selector: 'app-journal-entry',
@@ -7,24 +7,18 @@ import { DiaryEntry } from './diaryEntryModel';
 })
 export class JournalEntryComponent implements OnInit {
 
-  @Output() viewJournalListEmitter = new EventEmitter<boolean>();
+ 
   @Output() journalEmitter = new EventEmitter<DiaryEntry>();
+  @Input() diaryEntry : DiaryEntry;
 
-  diaryEntry : DiaryEntry = {
-    title : "",
-    date : new Date(),
-    message : ""
-  };
 
-  viewJournalList : boolean = true;
   constructor() { }
 
   onViewJournalList(){
-    this.viewJournalList = false;
-    this.viewJournalListEmitter.emit(this.viewJournalList);
     this.journalEmitter.emit(this.diaryEntry);
     console.log(this.diaryEntry);
   }
+  
   ngOnInit(): void {
   }
 

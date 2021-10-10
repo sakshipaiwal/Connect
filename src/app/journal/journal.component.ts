@@ -18,17 +18,32 @@ export class JournalComponent implements OnInit {
     this.stylingService = stylingService;
   }
 
+  diaryEntry : DiaryEntry = {
+    title : "",
+    date : new Date(),
+    message : ""
+  };
+
   onJournalEntry(){
     this.journalEntry = true;
   }
 
-  onViewJournalList(viewJournalList : any){
-    this.journalEntry = viewJournalList;
-  }
+  
 
   onAddJournal(diaryEntry : DiaryEntry){
     console.log(diaryEntry);
+    this.diaryEntry = {
+      title : "",
+      date : new Date(),
+      message : ""
+    };
+    this.journalEntry = false;
     this.entries.push(diaryEntry);
+  }
+
+  onViewJournal(diaryEntry : DiaryEntry){
+    this.diaryEntry = diaryEntry;
+    this.journalEntry = true;
   }
 
   ngOnInit(): void {
