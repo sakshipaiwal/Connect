@@ -11,6 +11,7 @@ import { TaskInterface } from './dataStructures/task';
 export class TrackerComponent implements OnInit {
   stylingService : StylingService;
   taskService : TaskService;
+  tasksType : String = "pending";
   
   taskList : TaskInterface[] = [];
 
@@ -24,7 +25,11 @@ export class TrackerComponent implements OnInit {
 
   }
 
-
+  onTaskSelectorClick(taskType : String){
+    this.tasksType = "taskType";
+    this.taskList = this.taskService.fetchTasks();
+    console.log(taskType);
+  }
 
 
   // styles go here

@@ -1,4 +1,28 @@
 <div [ngStyle]= "getMainDivStyle()" style="display: flex;margin-top: 5vw;flex-direction: column;align-items: center;">
+
+    <div style="display : flex; justify-content: center;width: 80%;margin-bottom: 5vw;">
+        <div>
+            <button class="btn btn-primary" (click) = "onTaskSelectorClick('pending')">
+                Pending
+            </button>
+        </div>
+
+        <div>
+            <button class="btn btn-primary" style="margin-left: 1vw;margin-right: 1vw;" (click) = "onTaskSelectorClick('done')">
+                Done
+            </button>
+        </div>
+
+
+        <div>
+            <button class="btn btn-primary">
+                New
+            </button>
+        </div>
+    
+    </div>
+
+
     <div style = "font-size: 3vh;"> Pending</div>
     <div style="display: flex;justify-content: space-between;">
     <app-task  *ngFor = "let task of taskList" [task] = "task"></app-task>
