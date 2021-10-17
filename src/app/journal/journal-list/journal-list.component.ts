@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { JournalService } from 'src/app/services/journalService/journal.service';
 import { DiaryEntry } from '../journal-entry/diaryEntryModel';
 
 @Component({
@@ -12,13 +13,19 @@ export class JournalListComponent implements OnInit {
   @Output() outputDiaryEntry = new EventEmitter<DiaryEntry>();
   @Output() onViewJournalEmitter = new EventEmitter<boolean>();
 
-  entry : string = "iernvcuier ricneri c ci eroierc erjc oier cre cre c rei cjier cerc re c rcui erc erc ijer  cuier curie";
-  displayEntry : string = this.entry.slice(0,50);
-  constructor() { }
+  journalService : JournalService;
+
+  constructor(journalService : JournalService) { 
+    this.journalService = journalService;
+  }
 
   onViewJournal(){
     this.outputDiaryEntry.emit(this.diaryEntry);
     this.onViewJournalEmitter.emit(true);
+  }
+
+  onDeleteDiaryEntry(){
+    this.journalService.deleteDiaryEntry(this.diaryEntry);
   }
   
   ngOnInit(): void {

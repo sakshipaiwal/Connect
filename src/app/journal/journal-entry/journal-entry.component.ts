@@ -14,7 +14,7 @@ export class JournalEntryComponent implements OnInit {
 
   constructor() { }
 
-  onViewJournalList(){
+  onAddJournalList(){
     this.journalEmitter.emit(this.diaryEntry);
     console.log(this.diaryEntry);
   }
