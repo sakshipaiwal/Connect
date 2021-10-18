@@ -14,6 +14,7 @@ import { JournalViewComponent } from './journal/journal-view/journal-view.compon
 import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { HomeComponent } from './home/home.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    SocialLoginModule
+    SocialLoginModule,
+    HttpClientModule
   ],
   providers: [
     {
@@ -49,7 +51,7 @@ import { HomeComponent } from './home/home.component';
           }
         ]
       } as SocialAuthServiceConfig,
-    }  
+    }
   ],
   bootstrap: [AppComponent]
 })
