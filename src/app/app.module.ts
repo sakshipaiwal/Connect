@@ -15,6 +15,7 @@ import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule} from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { HttpClientModule} from '@angular/common/http';
           }
         ]
       } as SocialAuthServiceConfig,
-    }
+    },
+    CookieService
   ],
   bootstrap: [AppComponent]
 })

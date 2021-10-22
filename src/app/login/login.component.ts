@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SocialAuthService, GoogleLoginProvider, SocialUser } from 'angularx-social-login';
-import { LoginService } from '../services/loginService/login.service';
+import { UserService } from '../services/UserService/user.service';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder, 
     private socialAuthService: SocialAuthService,
     private router : Router,
-    private loginService : LoginService
+    private userService : UserService
   ) { }
 
   ngOnInit() {
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
       this.isLoggedin = (user != null);
       console.log(this.socialUser);
       localStorage.setItem ('token', this.socialUser.idToken);
-      this.loginService.createNewUser();
+      this.userService.signUp(this.socialUser.idToken);
     });
   }
 
