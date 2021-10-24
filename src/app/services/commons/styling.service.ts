@@ -5,8 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class StylingService {
 
-  appMarginLeft : string = "15vw";
-  appMarginRight : string = "15vw";
+  appMarginLeft : string = "20vw";
+  appMarginRight : string = "20vw";
 
 
   constructor() { }

@@ -1,4 +1,50 @@
-<div [ngStyle]= "getMainDivStyle()" style="background-color: blue;">
+<app-header>
+</app-header>
+<div [ngStyle]= "getMainDivStyle()" style="background-color: #FDFBF7; height: 85vh; padding: 1vw 1vw 2vw 2vw; margin-top: 2vw;">
+    <div *ngIf="!journalEntry">
+        <div  
+        style="display: flex; justify-content: space-between; margin-bottom: 4vw;">
+            <app-search></app-search>
+            <div
+            style="border-radius: 10px; margin-right: .5vw; color: black; background-color: white; border-color: BLUE; cursor: pointer;"
+            (click) = "onJournalEntry()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-file-plus" viewBox="0 0 16 16">
+                    <path d="M8.5 6a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V10a.5.5 0 0 0 1 0V8.5H10a.5.5 0 0 0 0-1H8.5V6z"/>
+                    <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/>
+                  </svg>
+                
+            </div>
+        </div>
+        
+        
+        <app-journal-list
+        *ngFor="let entry of entries"
+        [diaryEntry] = "entry"
+        (outputDiaryEntry) = "onViewJournalEntry($event)"
+        >
+        </app-journal-list>
+
+    </div>
     
-    hello
+    <div *ngIf = "journalEntry">
+        <div 
+        *ngIf="!viewJournal"
+        style="display: flex; justify-content: center;">
+            <app-journal-entry
+            (journalEmitter) = "onAddJournal($event)"
+            [diaryEntry]="diaryEntry"
+            ></app-journal-entry>
+            
+        </div>
+        <div 
+        *ngIf="viewJournal"
+        style="display: flex; justify-content: center;">
+            <app-journal-view
+            (viewJournalList)="onViewJournalList($event)"
+            [diaryEntry]="diaryEntry">
+            </app-journal-view>
+        </div>
+    </div>
+    
+ 
 </div>
