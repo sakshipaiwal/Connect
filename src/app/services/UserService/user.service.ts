@@ -18,7 +18,7 @@ export class UserService {
     var user : any = "";
     tokenId = "token " + tokenId;
     var childUrl = "signUp";
-
+    console.log(tokenId);
     var url = this.urlService.aggregator([this.parentUrl, childUrl]);
     this.http.post(url, user, {
       headers: new HttpHeaders({
@@ -28,12 +28,13 @@ export class UserService {
     .subscribe(
       result => {
         console.log("Here is the result " + result);
+        this.signIn(tokenId);
       },
       err => {
         console.log("Error- something is wrong!")
     });
 
-    this.signIn(tokenId);
+
   
   }
 
@@ -51,16 +52,17 @@ export class UserService {
     .subscribe(
       result => {
         this.loginResponse = result;
+        var accessToken = this.loginResponse.accessToken;
+        localStorage.setItem('accessToken', accessToken);
+
+        var refreshToken = this.cookies.get('refreshToken');
+        localStorage.setItem('refreshToken', refreshToken);
       },
       err => {
         console.log("Error- something is wrong!")
     });
 
-    var accessToken = this.loginResponse.accessToken;
-    localStorage.setItem('accessToken', accessToken);
-
-    var refreshToken = this.cookies.get('refreshToken');
-    localStorage.setItem('refreshToken', refreshToken);
+    
 
   }
 

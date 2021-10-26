@@ -45,6 +45,9 @@ export class AuthInterceptor implements HttpInterceptor {
   }
   
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    if(request.url.toLowerCase().includes("signup") || request.url.toLowerCase().includes("login"))
+      return next.handle(request);
+
     let accessToken = localStorage.getItem("accessToken");
     if(accessToken){
       request = this.addToken(request,accessToken);
@@ -56,8 +59,6 @@ export class AuthInterceptor implements HttpInterceptor {
         if(error instanceof HttpErrorResponse && error.status === 401){
           return this.handle401Error(request,next);
         }
-
-
           return throwError(error.message);
         }
       )

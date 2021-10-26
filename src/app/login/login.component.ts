@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
       this.socialUser = user;
       this.isLoggedin = (user != null);
       console.log(this.socialUser);
-      localStorage.setItem ('token', this.socialUser.idToken);
+      console.log(this.socialUser.idToken);
       this.userService.signUp(this.socialUser.idToken);
     });
   }
