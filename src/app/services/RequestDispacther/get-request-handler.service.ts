@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Interface } from 'readline';
 import { RequestDispatcherService } from './request-dispatcher.service';
 
 @Injectable({

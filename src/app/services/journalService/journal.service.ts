@@ -3,7 +3,6 @@ import { DiaryEntry } from 'src/app/journal/journal-entry/diaryEntryModel';
 import { UrlService } from '../UrlService/url.service';
 import { HttpClient } from '@angular/common/http';
 import { RequestDispatcherService } from '../RequestDispacther/request-dispatcher.service';
-import { ifError } from 'assert';
 import { GetRequestHandlerService } from '../RequestDispacther/get-request-handler.service';
 import { PostRequestHandlerService } from '../RequestDispacther/post-request-handler.service';
 

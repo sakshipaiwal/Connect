@@ -35,13 +35,15 @@ export class LoginComponent implements OnInit {
       this.isLoggedin = (user != null);
       console.log(this.socialUser);
       localStorage.setItem ('token', this.socialUser.idToken);
+      this.router.navigate(['/home']);
       this.userService.signUp(this.socialUser.idToken);
+      
     });
   }
 
   loginWithGoogle(): void {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
-    this.router.navigate(['/home'])
+    
   }
 
   logOut(): void {
