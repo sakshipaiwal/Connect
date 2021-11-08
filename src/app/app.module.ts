@@ -14,7 +14,6 @@ import { JournalEntryComponent } from './journal/journal-entry/journal-entry.com
 import { JournalListComponent } from './journal/journal-list/journal-list.component';
 import { JournalViewComponent } from './journal/journal-view/journal-view.component';
 import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home/home.component';
 import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
@@ -30,8 +29,7 @@ import { CookieService } from 'ngx-cookie-service';
     JournalEntryComponent,
     JournalListComponent,
     JournalViewComponent,
-    LoginComponent,
-    HomeComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,

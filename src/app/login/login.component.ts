@@ -20,8 +20,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder, 
     private socialAuthService: SocialAuthService,
-    private router : Router,
-    private userService : UserService
+    private userService : UserService,
+    private router : Router
   ) { }
 
   ngOnInit() {
@@ -35,13 +35,15 @@ export class LoginComponent implements OnInit {
       this.isLoggedin = (user != null);
       console.log(this.socialUser);
       console.log(this.socialUser.idToken);
-      this.userService.signUp(this.socialUser.idToken);
+      this.userService.ifLogin = true;
+      this.router.navigate(['/home']);
+      //this.userService.signUp(this.socialUser.idToken);
     });
   }
 
   loginWithGoogle(): void {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
-    this.router.navigate(['/home'])
+    
   }
 
   logOut(): void {

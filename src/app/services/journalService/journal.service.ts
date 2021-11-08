@@ -21,52 +21,21 @@ export class JournalService {
 
     let childUrl = "journalView";
     let url = this.urlService.aggregator([this.parentUrl, childUrl]);
-
-    
-
-
-    this.http.get<DiaryEntry[]>(url).subscribe(data => {
-      this.entries = data;
-    },
-    err => {
-      console.log("Error- something is wrong!");
-
-      this.http.get<DiaryEntry[]>(url).subscribe(data => {
-        this.entries = data;
-      },
-      err => {
-        console.log("Access denied");
-      });
-
-    });
-
-    return this.entries;
+    return this.http.get<DiaryEntry[]>(url);
   }
 
   addDiaryEntry(diaryEntry : DiaryEntry){
 
+    
     let childUrl = "journalView";
     let url = this.urlService.aggregator([this.parentUrl, childUrl]);
-
-    
-
-    
-    this.http.post<DiaryEntry[]>(url, diaryEntry).subscribe(data => {
-      this.entries.push(diaryEntry);
-    },
-    err => {
-      console.log("Error- something is wrong!");
-
-      
-      this.http.post<DiaryEntry[]>(url, diaryEntry).subscribe(data => {
-        this.entries.push(diaryEntry);
-      },
-      err => {
-        console.log("Access denied");
-      });
-      
-    });
-    
+    // this.http.post<DiaryEntry[]>(url, diaryEntry).subscribe(data => {
+    //   this.entries.push(diaryEntry);
+    // },
+    // err => {
+    //   console.log(err);
+    // });
+    this.entries.push(diaryEntry); 
     return this.entries;
 
   }

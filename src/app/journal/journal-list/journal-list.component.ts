@@ -13,6 +13,8 @@ export class JournalListComponent implements OnInit {
   @Output() outputDiaryEntry = new EventEmitter<DiaryEntry>();
   @Output() onViewJournalEmitter = new EventEmitter<boolean>();
 
+  date : string;
+
   journalService : JournalService;
 
   constructor(journalService : JournalService) { 
@@ -29,6 +31,7 @@ export class JournalListComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    this.date = String(this.diaryEntry.date);
   }
 
 }

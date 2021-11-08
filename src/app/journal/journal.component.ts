@@ -57,7 +57,10 @@ export class JournalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.entries = this.journalService.getAllDiaryEntries();
+    console.log("here");
+    this.journalService.getAllDiaryEntries().subscribe(data =>{
+      this.entries = data;
+    });
   }
 
   // Styles

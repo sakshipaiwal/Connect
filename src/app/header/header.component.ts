@@ -13,6 +13,10 @@ export class HeaderComponent implements OnInit {
   onViewJournal(){
     this.router.navigate(['home/journal'])
   }
+
+  onViewTracker(){
+    this.router.navigate(['home/tracker'])
+  }
   ngOnInit(): void {
   }
 

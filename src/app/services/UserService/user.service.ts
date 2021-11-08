@@ -3,16 +3,20 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UrlService } from '../UrlService/url.service';
 import { LoginResponse } from '../response-structures/loginResponse';
 import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private http: HttpClient, private urlService : UrlService, private cookies : CookieService) { }
+  constructor(private http: HttpClient, 
+    private urlService : UrlService, 
+    private cookies : CookieService,
+    private router : Router) { }
 
   parentUrl : string = "users";
-  loginResponse : LoginResponse;
+  public ifLogin : Boolean = false;
 
   signUp(tokenId : string){
     var user : any = "";
@@ -29,13 +33,11 @@ export class UserService {
       result => {
         console.log("Here is the result " + result);
         this.signIn(tokenId);
+        
       },
       err => {
         console.log("Error- something is wrong!")
     });
-
-
-  
   }
 
   signIn(tokenId : string){
@@ -51,18 +53,14 @@ export class UserService {
     })
     .subscribe(
       result => {
-        this.loginResponse = result;
-        var accessToken = this.loginResponse.accessToken;
-        localStorage.setItem('accessToken', accessToken);
-
-        var refreshToken = this.cookies.get('refreshToken');
-        localStorage.setItem('refreshToken', refreshToken);
+        localStorage.setItem('accessToken', result.accessToken);
+        localStorage.setItem('refreshToken', this.cookies.get('refreshToken'));
+        this.ifLogin = true;
+        this.router.navigate(['/home']);
       },
       err => {
         console.log("Error- something is wrong!")
     });
-
-    
 
   }
 

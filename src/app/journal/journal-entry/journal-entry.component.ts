@@ -16,7 +16,8 @@ export class JournalEntryComponent implements OnInit {
 
   onAddJournalList(){
     this.journalEmitter.emit(this.diaryEntry);
-    console.log(this.diaryEntry);
+    var d = String(this.diaryEntry.date);
+    console.log(d.slice(0,10));
   }
   
   ngOnInit(): void {
