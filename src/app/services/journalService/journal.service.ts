@@ -29,13 +29,12 @@ export class JournalService {
     
     let childUrl = "journalView";
     let url = this.urlService.aggregator([this.parentUrl, childUrl]);
-    // this.http.post<DiaryEntry[]>(url, diaryEntry).subscribe(data => {
-    //   this.entries.push(diaryEntry);
-    // },
-    // err => {
-    //   console.log(err);
-    // });
-    this.entries.push(diaryEntry); 
+     this.http.post<DiaryEntry[]>(url, diaryEntry).subscribe(data => {
+      this.entries.push(diaryEntry);
+    },
+    err => {
+      console.log(err);
+    });
     return this.entries;
 
   }

@@ -14,7 +14,9 @@ export class AppComponent implements DoCheck{
 
   constructor(
     private userService : UserService
-  ){ }
+  ){ 
+
+  }
 
   onForgive(){
     console.log("Hello")
@@ -22,7 +24,10 @@ export class AppComponent implements DoCheck{
   }
 
   ngDoCheck(){
-    if(this.userService.ifLogin == true)
+    
+    var accessToken = localStorage.getItem('accessToken');
+    
+    if(accessToken)
       this.ifLogin = true;
   }
 }

@@ -11,7 +11,7 @@ import { UserService } from '../services/UserService/user.service';
 })
 
 
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit{
 
   loginForm: FormGroup;
   socialUser: SocialUser;
@@ -35,9 +35,9 @@ export class LoginComponent implements OnInit {
       this.isLoggedin = (user != null);
       console.log(this.socialUser);
       console.log(this.socialUser.idToken);
-      this.userService.ifLogin = true;
-      this.router.navigate(['/home']);
-      //this.userService.signUp(this.socialUser.idToken);
+      //this.userService.ifLogin = true;
+      //this.router.navigate(['/home']);
+      this.userService.signUp(this.socialUser.idToken);
     });
   }
 
@@ -49,5 +49,6 @@ export class LoginComponent implements OnInit {
   logOut(): void {
     this.socialAuthService.signOut();
   }
+
 
 }
